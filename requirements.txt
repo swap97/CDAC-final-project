@@ -1,0 +1,6 @@
+flask
+tensorflow-cpu  # Using CPU version for smaller image size
+opencv-python-headless
+mtcnn
+numpy
+gunicorn
