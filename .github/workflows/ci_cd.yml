@@ -52,3 +52,6 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/deepfake-detection:latest
+          # Add these two lines to help with reliability
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
