@@ -1,11 +1,14 @@
 FROM python:3.9-slim
 
 # Installing system dependencies for OpenCV and MTCNN
-RUN apt-get update --fix-missing && apt-get install -y \
+RUN apt-get update --fix-missing && \
+    for i in 1 2 3; do \
+    apt-get install -y --no-install-recommends \
     libgl1-mesa-glx \
-    libglib2.0-0 \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    libglib2.0-0 && break || sleep 5; \
+    done && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
