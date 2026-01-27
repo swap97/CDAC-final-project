@@ -14,7 +14,8 @@ COPY requirements.txt .
 # Installing python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY best_deepfake_model.h5 .
+COPY app.py .
 
 # Port Flask runs on
 EXPOSE 5000
