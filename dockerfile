@@ -10,18 +10,22 @@ RUN apt-get update --fix-missing && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app
+RUN useradd -m -u 1000 user
+USER user
+ENV HOME=/home/user \
+    PATH=/home/user/.local/bin:$PATH
 
-COPY requirements.txt .
+WORKDIR $HOME/app
 
-# Installing python dependencies
+COPY --chown=user requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY best_deepfake_model.h5 .
-COPY app.py .
+# Installing python dependencies
+COPY --chown=user best_deepfake_model.h5 .
+COPY --chown=user app.py .
 
 # Port Flask runs on
-EXPOSE 5000
+EXPOSE 7860
 
 # Setting up the environment variables
 ENV FLASK_APP=app.py
