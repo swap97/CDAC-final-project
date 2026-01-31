@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepfake Detection | AI Powered Security</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="background-glow"></div>
+
+    <main class="container">
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>TrueSight</span>
+            </div>
+            <h1>Deepfake Detection</h1>
+            <p class="subtitle">Advanced AI to distinguish real videos from manipulated media.</p>
+        </header>
+
+        <section class="upload-section">
+            <div class="drop-zone" id="drop-zone">
+                <div class="icon-container">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                </div>
+                <h3>Drag & Drop Video Here</h3>
+                <p>or <span class="browse-btn">browse files</span></p>
+                <input type="file" id="file-input" accept="video/*" hidden>
+                <div class="file-info" id="file-info" style="display: none;">
+                    <i class="fa-regular fa-file-video"></i>
+                    <span id="filename">video.mp4</span>
+                    <i class="fa-solid fa-xmark remove-file" id="remove-file"></i>
+                </div>
+            </div>
+            <button id="analyze-btn" class="cta-button" disabled>
+                <span>Analyze Video</span>
+                <div class="loader" id="loader"></div>
+            </button>
+        </section>
+
+        <section class="result-section" id="result-section">
+            <div class="result-card" id="result-card">
+                <div class="status-icon" id="status-icon">
+                    <!-- Icon injected by JS -->
+                </div>
+                <h2 id="result-text">Waiting for input...</h2>
+                <div class="confidence-bar-container">
+                    <div class="confidence-label">
+                        <span>Confidence Score</span>
+                        <span id="confidence-value">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>2026 CDAC AI. Powered by TensorFlow & OpenCV.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
