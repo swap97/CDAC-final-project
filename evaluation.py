@@ -1,3 +1,6 @@
+import tensorflow as tf
+import numpy as np
+
 def measure_deepfake_reliability(model_path, dataset, num_batches=5):
     """
     Measures performance using Confidence, Stability (Noise Robustness), 
